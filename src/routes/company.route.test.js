@@ -3,6 +3,8 @@ const app = require("../../src/app");
 const mongoose = require("mongoose");
 const { MongoMemoryServer } = require("mongodb-memory-server");
 const Company = require("../../src/models/company.model");
+const jwt = require("jsonwebtoken");
+jest.mock("jsonwebtoken");
 
 mongoose.set("useNewUrlParser", true);
 mongoose.set("useFindAndModify", false);
@@ -120,4 +122,22 @@ describe("company", () => {
       .expect(200);
     expect(actualCompany).toEqual(expectedCompanyData);
   });
+
+  /*
+  it("POST /companies/:id/reviews should return 201 and respond with the review", async () => {
+    const expectedReview = {
+      rating: 4,
+      title: "eligendi adipisci",
+      review:
+        "Et voluptatem voluptas quisquam quos officia assumenda. Mollitia delectus vitae quia molestias nulla ut hic praesentium. Sed et assumenda et iusto velit laborum sunt non."
+    };
+    jwt.verify.mockReturnValueOnce({});
+    const { body: response } = await request(app)
+      .post("/compaines/1/reviews")
+      .expect(201)
+      .send(expectedReview);
+
+    expect(response).toEqual(expectedReview);
+  });
+  */
 });

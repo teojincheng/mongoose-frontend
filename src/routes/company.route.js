@@ -15,6 +15,12 @@ const findOneCompanyWithReview = async id => {
   return foundCompany;
 };
 
+/*
+const addOneReviewToCompany = async (id, review) => {
+  const company = Company.find({ id });
+  company.reviews.push(review);
+};
+*/
 router.get("/", async (req, res) => {
   const collection = await findAllWithoutReview();
   res.status(200).send(collection);
@@ -24,5 +30,7 @@ router.get("/:id", async (req, res) => {
   const company = await findOneCompanyWithReview(req.params.id);
   res.status(200).send(company);
 });
+
+router.post("/:id/reviews", async (req, res) => {});
 
 module.exports = router;
