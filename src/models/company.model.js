@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const review = Schema({
+const review = new Schema({
   id: String,
   userId: String,
   userName: String,
@@ -10,7 +10,7 @@ const review = Schema({
   review: String
 });
 
-const company = Schema({
+const company = new Schema({
   id: String,
   companyName: String,
   companySuffix: String,
