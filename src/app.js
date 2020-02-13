@@ -14,4 +14,8 @@ app.get("/", (req, res, next) => {
   res.status(200).send(listOfEndPoints);
 });
 
+const companyRouter = require("./routes/company.route");
+
+app.use("/companies", companyRouter);
+
 module.exports = app;
