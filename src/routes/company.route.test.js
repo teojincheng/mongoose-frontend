@@ -80,6 +80,6 @@ describe("company", () => {
     const { body: actualCompany } = await request(app)
       .get("/companies")
       .expect(200);
-    expect(actualCompany).toMatchObject(expectedCompanyData);
+    expect(actualCompany).toEqual(expectedCompanyData);
   });
 });

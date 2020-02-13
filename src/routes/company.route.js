@@ -4,7 +4,7 @@ const router = express.Router();
 const Company = require("../models/company.model");
 
 const findAllWithoutReview = async () => {
-  const foundCompanies = await Company.find(Company, "-reviews");
+  const foundCompanies = await Company.find().select("-__v -_id -reviews");
   return foundCompanies;
 };
 
