@@ -57,4 +57,24 @@ describe("user", () => {
       .expect(200);
     expect(actualUser).toMatchObject(expectedUserData[0]);
   });
+
+  it("POST / should return 201 and return the new user", async () => {
+    const newUser = {
+      id: "854aece9-64bf-42ab-b91c-bb65e2db3a37",
+      firstName: "Kate",
+      lastName: "Green",
+      email: "kategreen@hotmail.com"
+    };
+    const { body: user } = await (await request(app).post("/users"))
+      .send(newUser)
+      .expect(201);
+    expect(user.email).toBe(newUser.email);
+  });
+
+  it(" POST /Login should respond with 200 and return the you are logged in message ", async () => {
+    const correctUser = {
+      userName: "Humberto Bruen",
+      userId: "754aece9-64bf-42ab-b91c-bb65e2db3a37"
+    };
+  });
 });
